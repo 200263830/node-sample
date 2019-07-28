@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  # Unique key of the ReplicaSet instance
+  name: nodejs-repset
+spec:
+  selector:
+    matchLabels:
+      app: testapp
+  # 3 Pods should exist at all times.
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+      # Run the nginx image
+      - name: testapp
+        image: 200263830/nodejs_image
